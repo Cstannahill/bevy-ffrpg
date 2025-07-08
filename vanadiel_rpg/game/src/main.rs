@@ -3,6 +3,7 @@
 use bevy::prelude::*;
 use bevy::window::PresentMode;
 use bevy::render::texture::ImagePlugin;
+use bevy::diagnostic::FrameTimeDiagnosticsPlugin;
 
 mod plugins {
     pub mod core;
@@ -31,6 +32,7 @@ fn main() {
             })
                 .set(ImagePlugin::default_nearest()),
         )
+        .add_plugins(FrameTimeDiagnosticsPlugin::default())
         .add_plugins(CorePlugin)
         .add_plugins(MapPlugin)
         .add_plugins(MovementPlugin)
