@@ -1,0 +1,16 @@
+# Binaries
+**/target/
+
+# IDE
+**/.idea/
+**/.vscode/
+
+# Logs
+**/*.log
+
+# Byproducts
+Cargo.lock
+
+# Assets
+**/assets/**
+!.gitkeep
