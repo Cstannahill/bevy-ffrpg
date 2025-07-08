@@ -1,7 +1,7 @@
 //! Map loading and camera setup.
 
 use bevy::prelude::*;
-use bevy_ecs_tilemap::prelude::*;
+use bevy::color::palettes::basic::YELLOW;
 
 use super::movement::Player;
 
@@ -20,17 +20,7 @@ fn setup_camera(mut commands: Commands) {
 }
 
 fn spawn_player(mut commands: Commands) {
-    commands.spawn((
-        SpriteBundle {
-            sprite: Sprite {
-                color: Color::YELLOW,
-                custom_size: Some(Vec2::splat(16.0)),
-                ..default()
-            },
-            ..default()
-        },
-        Player,
-    ));
+    commands.spawn((Sprite::from_color(YELLOW, Vec2::splat(16.0)), Player));
 }
 
 fn load_map() {
