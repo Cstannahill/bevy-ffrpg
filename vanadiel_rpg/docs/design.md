@@ -4,6 +4,11 @@ I’ll let you know as soon as it’s ready for review.
 
 # Bevy FFXI Top-Down RPG – Design & Technical Specification
 
+## Current Implementation
+
+- Basic player spawning with a placeholder sprite.
+- Camera movement now follows the player.
+
 ## World and Lore Integration
 
 **Setting – Vana’diel Overview:** The game is set in _Vana’diel_, the world of Final Fantasy XI. Vana’diel is a rich fantasy world shaped by legendary crystals and ongoing conflict between its peoples and the Beastmen. The era is post-_Crystal War_ (the great war against the Beastmen led by the Shadow Lord) – roughly 20 years after the war’s end, similar to FFXI’s timeline. The three great nations remain united in an uneasy peace, but dangers stir on the frontiers. This setting allows the story to follow a new generation of adventurers taking up missions that echo FFXI’s main story (e.g. confronting the _resurrected Shadow Lord_ and the secrets of the Zilart). Lore elements such as the Mothercrystals, ancient races (Zilart, Kuluu), and elemental magic are woven into the narrative to ground the game firmly in FFXI’s universe.
