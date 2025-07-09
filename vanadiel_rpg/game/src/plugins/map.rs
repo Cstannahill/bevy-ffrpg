@@ -1,17 +1,19 @@
 //! Map loading and camera setup.
 
 use bevy::prelude::*;
-use bevy::color::palettes::basic::{BLUE, YELLOW};
+use bevy::color::palettes::basic::BLUE;
 use bevy_ecs_tilemap::prelude::*;
 
 use super::movement::Player;
+use super::loading::{AppState, GameAssets};
 
 /// Plugin responsible for map management.
 pub struct MapPlugin;
 
 impl Plugin for MapPlugin {
     fn build(&self, app: &mut App) {
-        app.add_systems(Startup, (setup_camera, spawn_player, spawn_npc, load_map))
+        app.add_systems(Startup, (setup_camera, spawn_npc))
+            .add_systems(OnEnter(AppState::InGame), load_map)
             .add_systems(Update, camera_follow);
     }
 }
@@ -20,14 +22,6 @@ fn setup_camera(mut commands: Commands) {
     commands.spawn(Camera2d);
 }
 
-fn spawn_player(mut commands: Commands) {
-    commands.spawn((
-        Sprite::from_color(YELLOW, Vec2::splat(16.0)),
-        Transform::from_translation(Vec3::new(32.0, 32.0, 1.0)),
-        GlobalTransform::default(),
-        Player,
-    ));
-}
 
 #[derive(Component)]
 struct Npc;
@@ -41,9 +35,9 @@ fn spawn_npc(mut commands: Commands) {
     ));
 }
 
-fn load_map(mut commands: Commands, asset_server: Res<AssetServer>) {
-    // Spawn a simple 20x11 tilemap with border walls
-    let map_size = TilemapSize { x: 20, y: 11 };
+fn load_map(mut commands: Commands, assets: Res<GameAssets>) {
+    // Spawn a simple 10x10 tilemap with border walls
+    let map_size = TilemapSize { x: 10, y: 10 };
     let tile_size = TilemapTileSize { x: 32.0, y: 32.0 };
     let grid_size = tile_size.into();
     let tilemap_entity = commands.spawn_empty().id();
@@ -70,7 +64,7 @@ fn load_map(mut commands: Commands, asset_server: Res<AssetServer>) {
         }
     }
 
-    let texture: Handle<Image> = asset_server.load("tiles.png");
+    let texture = assets.tileset.clone();
 
     commands.entity(tilemap_entity).insert(TilemapBundle {
         grid_size,
@@ -94,3 +88,4 @@ fn camera_follow(
         }
     }
 }
+// TODO: pathfinding and collision layers

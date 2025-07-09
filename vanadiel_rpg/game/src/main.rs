@@ -12,9 +12,19 @@ mod plugins {
     pub mod movement;
     pub mod combat;
     pub mod ui;
+    pub mod loading;
+    pub mod sprite;
 }
 
-use plugins::{combat::CombatPlugin, core::CorePlugin, map::MapPlugin, movement::MovementPlugin, ui::UiPlugin};
+use plugins::{
+    combat::CombatPlugin,
+    core::CorePlugin,
+    loading::LoadingPlugin,
+    map::MapPlugin,
+    movement::MovementPlugin,
+    sprite::SpritePlugin,
+    ui::UiPlugin,
+};
 
 /// Launches the game application.
 fn main() {
@@ -36,7 +46,9 @@ fn main() {
         .add_plugins(FrameTimeDiagnosticsPlugin::default())
         .add_plugins(TilemapPlugin)
         .add_plugins(CorePlugin)
+        .add_plugins(LoadingPlugin)
         .add_plugins(MapPlugin)
+        .add_plugins(SpritePlugin)
         .add_plugins(MovementPlugin)
         .add_plugins(CombatPlugin)
         .add_plugins(UiPlugin)

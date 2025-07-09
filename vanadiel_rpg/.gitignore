@@ -11,6 +11,6 @@
 # Byproducts
 Cargo.lock
 
-# Assets
-**/assets/**
-!.gitkeep
+# Fetch-on-demand assets
+assets/**/*.png
+assets/**/*.ogg

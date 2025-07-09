@@ -6,6 +6,7 @@ edition = "2021"
 [dependencies]
 bevy = { version = "0.16.1", features = ["dynamic_linking"] }
 bevy_ecs_tilemap = "0.16"
+bevy_asset_loader = { version = "0.23.0", features = ["2d"] }
 serde = { version = "1", features = ["derive"] }
 ron = "0.8"
 anyhow = "1"
