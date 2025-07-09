@@ -28,7 +28,7 @@ impl Plugin for CombatPlugin {
 fn start_battle(mut commands: Commands) {
     // Spawn a placeholder enemy sprite
     commands.spawn((
-        Sprite::from_color(Color::RED, Vec2::splat(16.0)),
+        Sprite::from_color(Color::rgb(1.0, 0.0, 0.0), Vec2::splat(16.0)),
         Combatant,
     ));
 }
