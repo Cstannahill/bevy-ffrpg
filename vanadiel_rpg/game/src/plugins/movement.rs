@@ -46,7 +46,7 @@ fn keyboard_movement(
             transform.translation += delta;
             // very basic encounter chance
             if random::<f32>() < 0.05 {
-                encounter_writer.send(EncounterEvent);
+                encounter_writer.write(EncounterEvent);
             }
         }
     }

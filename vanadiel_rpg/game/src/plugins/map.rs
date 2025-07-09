@@ -1,7 +1,7 @@
 //! Map loading and camera setup.
 
 use bevy::prelude::*;
-use bevy::color::palettes::basic::YELLOW;
+use bevy::color::palettes::basic::{BLUE, YELLOW};
 use bevy_ecs_tilemap::prelude::*;
 
 use super::movement::Player;
@@ -11,7 +11,7 @@ pub struct MapPlugin;
 
 impl Plugin for MapPlugin {
     fn build(&self, app: &mut App) {
-        app.add_systems(Startup, (setup_camera, spawn_player, load_map))
+        app.add_systems(Startup, (setup_camera, spawn_player, spawn_npc, load_map))
             .add_systems(Update, camera_follow);
     }
 }
@@ -21,12 +21,29 @@ fn setup_camera(mut commands: Commands) {
 }
 
 fn spawn_player(mut commands: Commands) {
-    commands.spawn((Sprite::from_color(YELLOW, Vec2::splat(16.0)), Player));
+    commands.spawn((
+        Sprite::from_color(YELLOW, Vec2::splat(16.0)),
+        Transform::from_translation(Vec3::new(32.0, 32.0, 1.0)),
+        GlobalTransform::default(),
+        Player,
+    ));
+}
+
+#[derive(Component)]
+struct Npc;
+
+fn spawn_npc(mut commands: Commands) {
+    commands.spawn((
+        Sprite::from_color(BLUE, Vec2::splat(16.0)),
+        Transform::from_translation(Vec3::new(96.0, 96.0, 1.0)),
+        GlobalTransform::default(),
+        Npc,
+    ));
 }
 
 fn load_map(mut commands: Commands, asset_server: Res<AssetServer>) {
-    // Spawn a simple 10x10 tilemap using a single white tile texture
-    let map_size = TilemapSize { x: 10, y: 10 };
+    // Spawn a simple 20x11 tilemap with border walls
+    let map_size = TilemapSize { x: 20, y: 11 };
     let tile_size = TilemapTileSize { x: 32.0, y: 32.0 };
     let grid_size = tile_size.into();
     let tilemap_entity = commands.spawn_empty().id();
@@ -35,10 +52,16 @@ fn load_map(mut commands: Commands, asset_server: Res<AssetServer>) {
     for x in 0..map_size.x {
         for y in 0..map_size.y {
             let tile_pos = TilePos { x, y };
+            let index = if x == 0 || y == 0 || x == map_size.x - 1 || y == map_size.y - 1 {
+                1
+            } else {
+                0
+            };
             let tile_entity = commands
                 .spawn(TileBundle {
                     position: tile_pos,
                     tilemap_id: TilemapId(tilemap_entity),
+                    texture_index: TileTextureIndex(index),
                     ..Default::default()
                 })
                 .id();
