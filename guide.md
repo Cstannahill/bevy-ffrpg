@@ -374,3 +374,5 @@ The result is a comprehensive top-down RPG that feels like _Final Fantasy XI reb
 All these help reduce development friction and allow non-programmer content contribution (designers can create maps and write dialogues without touching core code). Proper documentation of these tools will be maintained for team usage.
 
 Finally, with a solid roadmap and modular architecture, the project can be developed in parallel by a small team: e.g., one developer focuses on combat mechanics while another builds the overworld and quest system, thanks to the plugin separation. Regular integration and playtesting will ensure the hybrid design (FFXI’s depth + FF1’s style) results in a cohesive gaming experience.
+
+For troubleshooting common Rust compilation issues in separate Tauri-based tooling, see [tauri_compile_errors.md](tauri_compile_errors.md).
