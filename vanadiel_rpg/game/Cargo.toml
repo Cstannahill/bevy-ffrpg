@@ -9,6 +9,7 @@ bevy_ecs_tilemap = "0.16"
 serde = { version = "1", features = ["derive"] }
 ron = "0.8"
 anyhow = "1"
+rand = "0.8"
 
 [features]
 default = []
