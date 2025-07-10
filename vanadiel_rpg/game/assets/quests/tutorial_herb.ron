@@ -1,0 +1,5 @@
+(
+    id: "tutorial_herb",
+    name: "A Healer's Request",
+    description: "The town elder needs a healing herb from the forest outside town.",
+)

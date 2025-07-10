@@ -11,6 +11,8 @@ mod plugins {
     pub mod map;
     pub mod movement;
     pub mod combat;
+    pub mod interaction;
+    pub mod quest;
     pub mod ui;
     pub mod loading;
     pub mod sprite;
@@ -19,9 +21,11 @@ mod plugins {
 use plugins::{
     combat::CombatPlugin,
     core::CorePlugin,
+    interaction::InteractionPlugin,
     loading::LoadingPlugin,
     map::MapPlugin,
     movement::MovementPlugin,
+    quest::QuestPlugin,
     sprite::SpritePlugin,
     ui::UiPlugin,
 };
@@ -48,6 +52,8 @@ fn main() {
         .add_plugins(CorePlugin)
         .add_plugins(LoadingPlugin)
         .add_plugins(MapPlugin)
+        .add_plugins(InteractionPlugin)
+        .add_plugins(QuestPlugin)
         .add_plugins(SpritePlugin)
         .add_plugins(MovementPlugin)
         .add_plugins(CombatPlugin)

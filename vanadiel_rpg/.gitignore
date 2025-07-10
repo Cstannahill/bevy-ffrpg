@@ -14,3 +14,5 @@ Cargo.lock
 # Fetch-on-demand assets
 assets/**/*.png
 assets/**/*.ogg
+game/assets/textures/*.png
+game/assets/audio/*.ogg
