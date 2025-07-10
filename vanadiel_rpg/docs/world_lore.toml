@@ -1,0 +1,119 @@
+[world.overview]
+summary = "Vana'diel rebuilds after the Crystal War. The great nations maintain an uneasy alliance while Beastmen and ancient threats stir on the frontiers. Elemental crystals still power magic and technology, but rumors speak of a deeper calamity waiting to be awakened."
+
+[[world.history]]
+name = "Age of Dawn"
+summary = "Mythic era when the gods shaped the land and placed the Mothercrystals."
+
+[[world.history]]
+name = "Rise of the Zilart"
+summary = "An advanced race built sky cities and sought to reach paradise, leaving ruins across the world."
+
+[[world.history]]
+name = "Great Rupture"
+summary = "A calamity shattered the Zilart's plans, scattering their civilization and sealing away forbidden magic."
+
+[[world.history]]
+name = "Crystal War"
+summary = "Recent conflict where the allied nations fought the Shadow Lord and his Beastmen armies."
+
+[[world.history]]
+name = "Current Era"
+summary = "Two decades after the war, exploration of ruins and political intrigue accelerate as old wounds reopen."
+
+[[regions]]
+name = "Ronfaure"
+biome = "Forested valleys and rolling hills"
+locations = ["San d'Oria", "Briarwood Village", "Ghelsba Outpost", "Orcish ruins"]
+factions = ["Kingdom of San d'Oria", "Orc Tribes"]
+
+[[regions]]
+name = "Gustaberg"
+biome = "Rugged mountains and mining fields"
+locations = ["Bastok", "South Gustaberg Outpost", "Palborough Mines", "Crumbling Keep"]
+factions = ["Republic of Bastok", "Quadav clans"]
+
+[[regions]]
+name = "Sarutabaruta"
+biome = "Warm savanna and jungles"
+locations = ["Windurst", "Starfall Village", "Castle Oztroja", "Ancient research domes"]
+factions = ["Federation of Windurst", "Yagudo theocracy"]
+
+[[regions]]
+name = "La Theine Highlands"
+biome = "Highland plains and windswept plateaus"
+locations = ["Frontier Outpost", "La Theine Gorge", "Hidden caverns"]
+factions = ["Adventurers' League", "wandering Beastmen"]
+
+[[factions]]
+name = "Kingdom of San d'Oria"
+goal = "Protect Elvaan lands and uphold chivalric code"
+alignment = "Lawful Neutral"
+
+[[factions]]
+name = "Republic of Bastok"
+goal = "Expand mining operations and technological influence"
+alignment = "Neutral"
+
+[[factions]]
+name = "Federation of Windurst"
+goal = "Advance magical knowledge while safeguarding the forests"
+alignment = "Neutral Good"
+
+[[factions]]
+name = "Beastmen Tribes"
+goal = "Regain lost territories and challenge the nations"
+alignment = "Chaotic Evil"
+
+[[factions]]
+name = "Arcane Circle"
+goal = "Study relics and unseal ancient magic"
+alignment = "Chaotic Neutral"
+
+[[races]]
+name = "Humes"
+traits = "Adaptable and ambitious"
+culture = "Merchant guilds and republican ideals"
+origin = "Spread across Bastok and smaller towns"
+
+[[races]]
+name = "Elvaan"
+traits = "Tall warriors with strong faith"
+culture = "Knightly orders and strict traditions"
+origin = "Forests of Ronfaure"
+
+[[races]]
+name = "Tarutaru"
+traits = "Small, magically gifted"
+culture = "Scholarly federations and playful customs"
+origin = "Sarutabaruta"
+
+[[races]]
+name = "Mithra"
+traits = "Feline agility and sharp senses"
+culture = "Tribal hunters and scouts"
+origin = "Coastal and jungle villages"
+
+[[races]]
+name = "Galka"
+traits = "Massive strength and a stoic outlook"
+culture = "Nomadic laborers with a reincarnation myth"
+origin = "Desert wastes near Bastok"
+
+[[magic]]
+schools = ["Elemental", "Healing", "Shadow", "Geomancy", "Summoning"]
+limits = "Spells draw energy from crystals; overuse can corrupt the caster"
+artifacts = ["ancient Zilart focus stones", "crystal-bound grimoires"]
+
+[[hooks]]
+summary = "Goblins raid Briarwood Village seeking a lost Zilart artifact; players uncover the first clue to a wider conspiracy."
+
+[[hooks]]
+summary = "A frontier outpost in La Theine asks for aid against mysterious undead rising from hidden caverns."
+
+[[hooks]]
+summary = "Scholars of the Arcane Circle hire adventurers to explore a crumbling keep in Gustaberg for shards of forbidden magic."
+
+[[hooks]]
+summary = "Rumors spread of a forgotten god sealed beneath Castle Oztroja; the Yagudo plan a ritual to awaken it."
+
