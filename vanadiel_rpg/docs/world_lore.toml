@@ -117,3 +117,84 @@ summary = "Scholars of the Arcane Circle hire adventurers to explore a crumbling
 [[hooks]]
 summary = "Rumors spread of a forgotten god sealed beneath Castle Oztroja; the Yagudo plan a ritual to awaken it."
 
+
+
+# Additional Lore Sections
+
+[[characters]]
+name = "Alynna"
+role = "Young Elvaan knight"
+origin = "Ronfaure"
+description = "Driven to prove herself after the Crystal War, she mentors the player in San d'Oria."
+
+[[characters]]
+name = "Garrick"
+role = "Hume engineer"
+origin = "Bastok"
+description = "Obsessed with rediscovering lost Zilart machinery to strengthen his nation."
+
+[[characters]]
+name = "Shalira"
+role = "Mithra scout"
+origin = "Windurst"
+description = "Explores ruins for clues about her tribe's past and guides players through the frontier."
+
+[[characters]]
+name = "Eldran"
+role = "Mysterious wanderer"
+origin = "Unknown"
+description = "A figure tied to the sealed god, appearing in visions during early quests."
+
+[mythology]
+creation_story = "Altana wept five tears that became the Mothercrystals, giving life to Vana'diel."
+gods = ["Altana the Dawn Goddess", "Promathia the Twilight God"]
+ancient_calamity = "The Zilart tried to open the Gate of the Gods and unleashed the Great Rupture."
+elemental_crystals = ["Fire", "Ice", "Wind", "Earth", "Lightning", "Water", "Light", "Dark"]
+
+[[race_lore]]
+race = "Humes"
+history = "Once scattered nomads, they united under Bastok and now pursue industry and commerce."
+beliefs = "Value ingenuity and personal freedom."
+
+[[race_lore]]
+race = "Elvaan"
+history = "Descended from holy guardians of the northern forests."
+beliefs = "Hold chivalry and faith above all else."
+
+[[race_lore]]
+race = "Tarutaru"
+history = "Ancient magic scholars who built Windurst's academies."
+beliefs = "Knowledge is the highest virtue, though mischief is common."
+
+[[race_lore]]
+race = "Mithra"
+history = "Nomadic hunters that now share Windurst while keeping tribal traditions."
+beliefs = "Respect for nature and fierce loyalty to kin."
+
+[[race_lore]]
+race = "Galka"
+history = "A warrior people with a cycle of reincarnation, wandering the deserts."
+beliefs = "Strength and resilience guide their path."
+
+[[nation_lore]]
+name = "Kingdom of San d'Oria"
+capital = "San d'Oria"
+government = "Theocratic monarchy led by the royal family and cathedral."
+conflicts = "Struggles against Orc tribes and internal disputes over succession."
+
+[[nation_lore]]
+name = "Republic of Bastok"
+capital = "Bastok"
+government = "Industrial republic with a president and council of miners."
+conflicts = "Clashes with the Quadav and tensions with Galka laborers."
+
+[[nation_lore]]
+name = "Federation of Windurst"
+capital = "Windurst"
+government = "Magocratic council headed by the Star Sibyl."
+conflicts = "Beset by Yagudo zealots and arcane experiments gone awry."
+
+[intro_quest]
+start = "Briarwood Village"
+summary = "Goblins raid the forest village seeking a crystal shard. Tracking them leads the player through La Theine to a crumbling keep, uncovering hints of an awakened deity."
+
