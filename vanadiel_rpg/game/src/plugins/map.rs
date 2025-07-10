@@ -1,12 +1,12 @@
 //! Map loading and camera setup.
 
+use bevy::color::palettes::basic::{BLUE, GREEN};
 use bevy::prelude::*;
-use bevy::color::palettes::basic::BLUE;
 use bevy_ecs_tilemap::prelude::*;
 
-use super::movement::Player;
-use super::loading::{AppState, GameAssets};
 use super::interaction::Interactable;
+use super::loading::{AppState, GameAssets};
+use super::movement::Player;
 
 /// Plugin responsible for map management.
 pub struct MapPlugin;
@@ -23,7 +23,6 @@ fn setup_camera(mut commands: Commands) {
     commands.spawn(Camera2d);
 }
 
-
 #[derive(Component)]
 struct Npc;
 
@@ -33,7 +32,9 @@ fn spawn_npc(mut commands: Commands) {
         Transform::from_translation(Vec3::new(96.0, 96.0, 1.0)),
         GlobalTransform::default(),
         Npc,
-        Interactable { id: "elder".to_string() },
+        Interactable {
+            id: "elder".to_string(),
+        },
     ));
 }
 
@@ -80,10 +81,12 @@ fn load_map(mut commands: Commands, assets: Res<GameAssets>) {
 
     // Herb spawn for tutorial quest
     commands.spawn((
-        Sprite::from_color(Color::GREEN, Vec2::splat(16.0)),
+        Sprite::from_color(GREEN, Vec2::splat(16.0)),
         Transform::from_translation(Vec3::new(160.0, 32.0, 1.0)),
         GlobalTransform::default(),
-        Interactable { id: "herb".to_string() },
+        Interactable {
+            id: "herb".to_string(),
+        },
     ));
 }
 

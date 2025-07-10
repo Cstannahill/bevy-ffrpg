@@ -1,0 +1,23 @@
+pub mod combat;
+pub mod core;
+pub mod interaction;
+pub mod loading;
+pub mod lore;
+pub mod map;
+pub mod movement;
+pub mod quest;
+pub mod sprite;
+pub mod starter_area;
+pub mod ui;
+
+pub use combat::CombatPlugin;
+pub use core::CorePlugin;
+pub use interaction::InteractionPlugin;
+pub use loading::LoadingPlugin;
+pub use lore::LorePlugin;
+pub use map::MapPlugin;
+pub use movement::MovementPlugin;
+pub use quest::QuestPlugin;
+pub use sprite::SpritePlugin;
+pub use starter_area::StarterAreaPlugin;
+pub use ui::UiPlugin;

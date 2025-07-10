@@ -5,15 +5,15 @@ use std::collections::HashMap;
 use bevy::prelude::*;
 use serde::Deserialize;
 
-use super::interaction::InteractEvent;
 use super::combat::EncounterEvent;
+use super::interaction::InteractEvent;
 
-const DIALOG_ELDER: &str = include_str!("../assets/dialogue/elder.txt");
-const DIALOG_GUARD: &str = include_str!("../assets/dialogue/guard.txt");
-const DIALOG_SHOPKEEP: &str = include_str!("../assets/dialogue/shopkeeper.txt");
-const DIALOG_CHILD: &str = include_str!("../assets/dialogue/child.txt");
-const DIALOG_GOBLIN: &str = include_str!("../assets/dialogue/goblin.txt");
-const DIALOG_ALYNNA: &str = include_str!("../assets/dialogue/alynna.txt");
+const DIALOG_ELDER: &str = include_str!("../../assets/dialogue/elder.txt");
+const DIALOG_GUARD: &str = include_str!("../../assets/dialogue/guard.txt");
+const DIALOG_SHOPKEEP: &str = include_str!("../../assets/dialogue/shopkeeper.txt");
+const DIALOG_CHILD: &str = include_str!("../../assets/dialogue/child.txt");
+const DIALOG_GOBLIN: &str = include_str!("../../assets/dialogue/goblin.txt");
+const DIALOG_ALYNNA: &str = include_str!("../../assets/dialogue/alynna.txt");
 
 /// Status of a quest.
 #[derive(Clone, Copy, PartialEq, Eq, Deserialize)]
@@ -59,7 +59,7 @@ impl Plugin for QuestPlugin {
     }
 }
 
-const TUTORIAL_QUEST: &str = include_str!("../assets/quests/tutorial_herb.ron");
+const TUTORIAL_QUEST: &str = include_str!("../../assets/quests/tutorial_herb.ron");
 
 fn setup_quest(mut log: ResMut<QuestLog>) {
     let def: QuestDefinition = ron::from_str(TUTORIAL_QUEST).expect("valid quest");
@@ -77,7 +77,7 @@ fn quest_interactions(
             "herb" => handle_herb(&mut log),
             "goblin" => {
                 info!("{}", DIALOG_GOBLIN);
-                encounter_writer.send(EncounterEvent)
+                encounter_writer.send(EncounterEvent);
             }
             "guard" => info!("{}", DIALOG_GUARD),
             "shopkeeper" => info!("{}", DIALOG_SHOPKEEP),
