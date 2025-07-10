@@ -397,6 +397,84 @@ role = "Bastokan engineer"
 origin = "Bastok"
 description = "Inventor of airships, always experimenting with new machinery."
 
+[[characters]]
+name = "Karst"
+role = "Hume mercenary"
+origin = "Bastok"
+description = "Veteran of frontier skirmishes who sells his sword to the highest bidder."
+
+[[characters]]
+name = "Wolfgang"
+role = "Hume blacksmith"
+origin = "Southern Quon"
+description = "Forges weapons for adventurers and secretly researches crystal alloys."
+
+[[characters]]
+name = "Maymunah"
+role = "Hume scholar"
+origin = "Jeuno"
+description = "Studies ancient texts to uncover the truth behind the Crystal War."
+
+[[characters]]
+name = "Palardaifault R Davilles"
+role = "Elvaan chevalier"
+origin = "San d'Oria"
+description = "Esteemed noble who seeks to reclaim relics of his forebears."
+
+[[characters]]
+name = "Claidie"
+role = "Elvaan ranger"
+origin = "Ronfaure"
+description = "Guides travelers through the forests and scouts Orc movements."
+
+[[characters]]
+name = "Ajido-Marujido"
+role = "Tarutaru wizard"
+origin = "Windurst"
+description = "Master of ancient incantations, often lost in dangerous experiments."
+
+[[characters]]
+name = "Rukususu"
+role = "Tarutaru archivist"
+origin = "Windurst"
+description = "Keeps the Federation's most guarded tomes and dislikes interruptions."
+
+[[characters]]
+name = "Cha Lebagta"
+role = "Mithra hunter"
+origin = "Kazham"
+description = "Skilled tracker who trades rare pelts and news between tribes."
+
+[[characters]]
+name = "Jakoh Wahcondalo"
+role = "Mithra chieftain"
+origin = "Aydeewa"
+description = "Leads her tribe with a sharp wit and even sharper claws."
+
+[[characters]]
+name = "Dalzakk"
+role = "Galkan brawler"
+origin = "Bastok"
+description = "Roams the mines looking for tough work and tougher fights."
+
+[[characters]]
+name = "Gumbah"
+role = "Galkan merchant"
+origin = "Bastok"
+description = "Runs a small trade company and dreams of building a new homeland."
+
+[[characters]]
+name = "Fablinix"
+role = "Goblin tinkerer"
+origin = "Gustaberg"
+description = "Creates odd gadgets, some of which actually work as intended."
+
+[[characters]]
+name = "Leadavox"
+role = "Goblin broker"
+origin = "Jeuno"
+description = "Trades information for shinies and has ears everywhere in the city."
+
 [mythology]
 creation_story = "Altana wept five tears that became the Mothercrystals, giving life to Vana'diel."
 gods = ["Altana the Dawn Goddess", "Promathia the Twilight God"]
