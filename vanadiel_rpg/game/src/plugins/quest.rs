@@ -13,6 +13,7 @@ const DIALOG_GUARD: &str = include_str!("../assets/dialogue/guard.txt");
 const DIALOG_SHOPKEEP: &str = include_str!("../assets/dialogue/shopkeeper.txt");
 const DIALOG_CHILD: &str = include_str!("../assets/dialogue/child.txt");
 const DIALOG_GOBLIN: &str = include_str!("../assets/dialogue/goblin.txt");
+const DIALOG_ALYNNA: &str = include_str!("../assets/dialogue/alynna.txt");
 
 /// Status of a quest.
 #[derive(Clone, Copy, PartialEq, Eq, Deserialize)]
@@ -81,6 +82,7 @@ fn quest_interactions(
             "guard" => info!("{}", DIALOG_GUARD),
             "shopkeeper" => info!("{}", DIALOG_SHOPKEEP),
             "child" => info!("{}", DIALOG_CHILD),
+            "alynna" => info!("{}", DIALOG_ALYNNA),
             _ => {}
         }
     }
