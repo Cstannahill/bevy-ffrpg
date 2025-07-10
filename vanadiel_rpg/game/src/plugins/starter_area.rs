@@ -3,6 +3,7 @@ use bevy::prelude::*;
 
 use super::interaction::Interactable;
 use super::loading::AppState;
+use super::lore::LoreResource;
 
 /// Plugin for Briarwood Village setup.
 pub struct StarterAreaPlugin;
@@ -13,7 +14,8 @@ impl Plugin for StarterAreaPlugin {
     }
 }
 
-fn spawn_area(mut commands: Commands) {
+fn spawn_area(mut commands: Commands, lore: Res<LoreResource>) {
+    info!("Entering {}", lore.0.intro_quest.start);
     // Elder NPC
     commands.spawn((
         Sprite::from_color(Color::rgb(0.3, 0.5, 1.0), Vec2::splat(16.0)),
@@ -41,6 +43,13 @@ fn spawn_area(mut commands: Commands) {
         Transform::from_xyz(96.0, 32.0, 1.0),
         GlobalTransform::default(),
         Interactable { id: "child".to_string() },
+    ));
+    // Alynna mentor NPC from lore characters
+    commands.spawn((
+        Sprite::from_color(Color::rgb(0.8, 0.4, 0.8), Vec2::splat(16.0)),
+        Transform::from_xyz(48.0, 96.0, 1.0),
+        GlobalTransform::default(),
+        Interactable { id: "alynna".to_string() },
     ));
     // Goblin target in the forest
     commands.spawn((

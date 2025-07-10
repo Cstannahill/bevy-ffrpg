@@ -8,6 +8,7 @@ I’ll let you know as soon as it’s ready for review.
 
 - Basic player spawning with a placeholder sprite.
 - Camera movement now follows the player.
+- LorePlugin parses `docs/world_lore.toml` and spawns Briarwood Village NPCs.
 
 ## World and Lore Integration
 
