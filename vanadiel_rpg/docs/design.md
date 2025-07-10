@@ -141,7 +141,17 @@ Cut-scenes for main story events are essentially extended dialogue sequences pos
 
 Technically, each quest has conditions and flags in the game’s state. We maintain a data structure for quests (with fields like status, objectives completed, etc.). Dialogue or item interactions can update these flags. For instance, if Quest A requires you to bring an item to NPC X, when you talk to NPC X with the item in inventory, a special dialogue branch triggers, the item is removed, and the quest marked complete, giving a reward.
 
+Quest data lives in `game/assets/quests/` as small RON files. NPC dialogue text is stored under `game/assets/dialogue/`. Each quest file defines an `id`, `name`, and `description` used by the quest log. Dialogue files are plain text shown line by line when the player interacts with an NPC. This layout keeps content data-driven so new quests or conversations can be added without touching code.
+
 The quest journal UI is implemented as a menu the player can open. It shows active quests with a short summary and maybe a hint for next step. We ensure that main quests are clearly indicated to guide the player through the story, while side quests are optional and need discovery (just like FFXI often required talking to the right NPC to start a quest).
+
+```
+game/
+  assets/
+    quests/     # `.ron` quest definitions
+    dialogue/   # text files for NPC conversations
+```
+This folder structure keeps narrative assets organized and makes it easy to drop in new quest or dialogue files later.
 
 ### Additional Systems
 

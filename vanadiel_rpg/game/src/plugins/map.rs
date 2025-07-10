@@ -6,6 +6,7 @@ use bevy_ecs_tilemap::prelude::*;
 
 use super::movement::Player;
 use super::loading::{AppState, GameAssets};
+use super::interaction::Interactable;
 
 /// Plugin responsible for map management.
 pub struct MapPlugin;
@@ -32,6 +33,7 @@ fn spawn_npc(mut commands: Commands) {
         Transform::from_translation(Vec3::new(96.0, 96.0, 1.0)),
         GlobalTransform::default(),
         Npc,
+        Interactable { id: "elder".to_string() },
     ));
 }
 
@@ -75,6 +77,14 @@ fn load_map(mut commands: Commands, assets: Res<GameAssets>) {
         map_type: TilemapType::Square,
         ..Default::default()
     });
+
+    // Herb spawn for tutorial quest
+    commands.spawn((
+        Sprite::from_color(Color::GREEN, Vec2::splat(16.0)),
+        Transform::from_translation(Vec3::new(160.0, 32.0, 1.0)),
+        GlobalTransform::default(),
+        Interactable { id: "herb".to_string() },
+    ));
 }
 
 fn camera_follow(
