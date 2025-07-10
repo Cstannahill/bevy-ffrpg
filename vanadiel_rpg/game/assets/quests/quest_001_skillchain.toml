@@ -1,0 +1,2 @@
+objective = ["Perform any Level 1 Skillchain", "Magic Burst with the matching element"]
+reward = { exp = 150, item = "Minor Ether" }
