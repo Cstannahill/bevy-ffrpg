@@ -16,11 +16,13 @@ mod plugins {
     pub mod ui;
     pub mod loading;
     pub mod sprite;
+    pub mod starter_area;
 }
 
 use plugins::{
     combat::CombatPlugin,
     core::CorePlugin,
+    starter_area::StarterAreaPlugin,
     interaction::InteractionPlugin,
     loading::LoadingPlugin,
     map::MapPlugin,
@@ -52,6 +54,7 @@ fn main() {
         .add_plugins(CorePlugin)
         .add_plugins(LoadingPlugin)
         .add_plugins(MapPlugin)
+        .add_plugins(StarterAreaPlugin)
         .add_plugins(InteractionPlugin)
         .add_plugins(QuestPlugin)
         .add_plugins(SpritePlugin)
