@@ -1,38 +1,61 @@
-//! Lookup tables for weapon skills, spells, and skillchain combinations.
+//! Lookup tables for skills and skillchains loaded from TOML.
+
+use once_cell::sync::Lazy;
+use serde::Deserialize;
+use smallvec::{smallvec, SmallVec};
 
 use super::components::{Element, ScProp};
-use smallvec::smallvec;
-use smallvec::SmallVec;
 
-/// Resulting data for a skillchain pair.
-#[derive(Clone)]
-pub struct ChainResult {
-    pub level: u8,
-    pub elements: SmallVec<[Element; 4]>,
+/// Weapon skill definition loaded from `weapon_skills.toml`.
+#[derive(Clone, Deserialize)]
+pub struct WeaponSkillInfo {
+    pub name: String,
+    pub tp_cost: u16,
+    pub properties: [ScProp; 2],
 }
 
-/// Example weapon skill property table.
-pub const WEAPON_SKILLS: &[(&str, [ScProp; 2])] = &[
-    ("Burning Blade", [ScProp::Scission, ScProp::Liquefaction]),
-    ("Flat Blade", [ScProp::Detonation, ScProp::Impaction]),
-];
+/// Spell definition loaded from `spells.toml`.
+#[derive(Clone, Deserialize)]
+pub struct SpellInfo {
+    pub name: String,
+    pub element: Element,
+    pub cast_time: u16,
+}
 
-/// Example spell table.
-pub const SPELLS: &[(&str, Element, u16)] = &[
-    ("Fire", Element::Fire, 3),
-    ("Stone", Element::Earth, 3),
-];
+/// Skillchain entry mapping a sequence of properties to a level and elements.
+#[derive(Clone, Deserialize)]
+pub struct ChainEntry {
+    pub properties: Vec<ScProp>,
+    pub level: u8,
+    pub elements: Vec<Element>,
+}
 
-/// Simple lookup for two properties producing a chain.
-pub fn lookup_chain(a: ScProp, b: ScProp) -> Option<ChainResult> {
-    use ScProp::*;
-    match (a, b) {
-        (Scission, Detonation) => Some(ChainResult { level: 1, elements: smallvec![Element::Earth] }),
-        (Liquefaction, Impaction) => Some(ChainResult { level: 2, elements: smallvec![Element::Fire, Element::Light] }),
-        (Fragmentation, Gravitation) => Some(ChainResult { level: 3, elements: smallvec![Element::Dark] }),
-        (Distortion, Fusion) => Some(ChainResult { level: 3, elements: smallvec![Element::Light] }),
-        (Light, Light) => Some(ChainResult { level: 4, elements: smallvec![Element::Fire, Element::Wind, Element::Lightning, Element::Light] }),
-        (Darkness, Darkness) => Some(ChainResult { level: 4, elements: smallvec![Element::Ice, Element::Earth, Element::Water, Element::Dark] }),
-        _ => None,
+/// All weapon skills defined for the game.
+pub static WEAPON_SKILLS: Lazy<Vec<WeaponSkillInfo>> = Lazy::new(|| {
+    toml::from_str(include_str!("../../assets/data/weapon_skills.toml"))
+        .expect("valid weapon skill table")
+});
+
+/// All spells available to players.
+pub static SPELLS: Lazy<Vec<SpellInfo>> = Lazy::new(|| {
+    toml::from_str(include_str!("../../assets/data/spells.toml"))
+        .expect("valid spell table")
+});
+
+/// Complete skillchain lookup table.
+pub static SKILLCHAINS: Lazy<Vec<ChainEntry>> = Lazy::new(|| {
+    toml::from_str(include_str!("../../assets/data/skillchain_table.toml"))
+        .expect("valid skillchain table")
+});
+
+/// Checks if the provided property sequence forms a known skillchain.
+pub fn lookup_chain_sequence(seq: &[ScProp]) -> Option<(u8, SmallVec<[Element; 4]>)> {
+    for entry in SKILLCHAINS.iter() {
+        if entry.properties.as_slice() == seq {
+            let mut elems: SmallVec<[Element; 4]> = smallvec![];
+            elems.extend_from_slice(&entry.elements);
+            return Some((entry.level, elems));
+        }
     }
+    None
 }

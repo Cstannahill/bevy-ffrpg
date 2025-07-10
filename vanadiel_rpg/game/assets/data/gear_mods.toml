@@ -1,0 +1,9 @@
+[[gear_mods]]
+name = "Skillchain Earring"
+skillchain_duration = 2
+magic_burst_damage = 0
+
+[[gear_mods]]
+name = "Sorcerer's Ring"
+skillchain_duration = 0
+magic_burst_damage = 10

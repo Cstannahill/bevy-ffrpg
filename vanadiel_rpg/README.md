@@ -18,3 +18,10 @@ The textures originate from [Kenney](https://kenney.nl) and
 The music loop is hosted on [OpenGameArt](https://opengameart.org/).
 
 See [docs/design.md](docs/design.md) for the game design and tech spec.
+
+## Custom Skillchains
+
+Weapon skills, gear bonuses, and skillchain sequences are defined in the
+`game/assets/data` folder. Modders can extend `weapon_skills.toml` and
+`skillchain_table.toml` to script new chains. The engine loads these tables at
+startup so additional combos require no code changes.
