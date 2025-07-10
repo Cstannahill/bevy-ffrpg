@@ -7,3 +7,18 @@ properties = ["Scission", "Liquefaction"]
 name = "Flat Blade"
 tp_cost = 1000
 properties = ["Detonation", "Impaction"]
+
+[[weapon_skills]]
+name = "Hard Slash"
+tp_cost = 1000
+properties = ["Gravitation", "Scission"]
+
+[[weapon_skills]]
+name = "Spinning Slash"
+tp_cost = 1000
+properties = ["Fragmentation", "Gravitation"]
+
+[[weapon_skills]]
+name = "Tachi: Enpi"
+tp_cost = 1000
+properties = ["Transfixion", "Impaction"]

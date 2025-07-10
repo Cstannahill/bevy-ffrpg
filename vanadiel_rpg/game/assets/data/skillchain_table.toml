@@ -17,3 +17,28 @@ elements = ["Dark"]
 properties = ["Light", "Light"]
 level = 4
 elements = ["Fire", "Wind", "Lightning", "Light"]
+
+[[chains]]
+properties = ["Fragmentation", "Distortion", "Light"]
+level = 3
+elements = ["Light"]
+
+[[chains]]
+properties = ["Distortion", "Fusion", "Light"]
+level = 3
+elements = ["Light"]
+
+[[chains]]
+properties = ["Gravitation", "Fragmentation", "Darkness"]
+level = 3
+elements = ["Dark"]
+
+[[chains]]
+properties = ["Light", "Light", "Radiance"]
+level = 4
+elements = ["Fire", "Wind", "Lightning", "Light"]
+
+[[chains]]
+properties = ["Darkness", "Darkness", "Umbra"]
+level = 4
+elements = ["Ice", "Earth", "Water", "Dark"]

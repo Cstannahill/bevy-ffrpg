@@ -1,0 +1,39 @@
+[[examples]]
+sequence = ["Hard Slash", "Spinning Slash"]
+result = "Distortion"
+
+[[examples]]
+sequence = ["Burning Blade", "Flat Blade"]
+result = "Fusion"
+
+[[examples]]
+sequence = ["Tachi: Enpi", "Hard Slash"]
+result = "Transfixion"
+
+[[examples]]
+sequence = ["Hard Slash", "Spinning Slash", "Hard Slash"]
+result = "Light"
+
+[[examples]]
+sequence = ["Spinning Slash", "Hard Slash"]
+result = "Fragmentation"
+
+[[examples]]
+sequence = ["Burning Blade", "Hard Slash"]
+result = "Scission"
+
+[[examples]]
+sequence = ["Flat Blade", "Spinning Slash"]
+result = "Impaction"
+
+[[examples]]
+sequence = ["Tachi: Enpi", "Spinning Slash", "Hard Slash"]
+result = "Light"
+
+[[examples]]
+sequence = ["Hard Slash", "Hard Slash"]
+result = "Gravitation"
+
+[[examples]]
+sequence = ["Spinning Slash", "Spinning Slash"]
+result = "Fragmentation"

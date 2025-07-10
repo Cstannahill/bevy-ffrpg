@@ -1,11 +1,14 @@
 //! Core combat systems including skillchain detection and magic burst logic.
 
 use bevy::prelude::*;
-use smallvec::smallvec;
+use smallvec::{smallvec, SmallVec};
 
-use super::components::{ActionLog, LoggedSkill, MagicBurstWindow, SkillchainWindow};
+use super::components::{
+    ActionLog, CombatConfig, LoggedSkill, MagicBurstHit, MagicBurstWindow,
+    MagicBurstWindowEvent, SkillchainStart, SkillchainStep, SkillchainWindow,
+};
 use super::components::{Element, ScProp};
-use super::skill_tables::lookup_chain;
+use super::skill_tables::lookup_chain_sequence;
 
 /// Event fired when a weapon skill is used.
 #[derive(Event)]
@@ -21,39 +24,79 @@ pub struct SpellCastEvent {
     pub damage: u32,
 }
 
-/// Checks recent weapon skills for valid skillchain pairs.
+/// Checks recent weapon skills for known skillchain sequences.
 pub fn detect_skillchain(
     mut commands: Commands,
     mut events: EventReader<WeaponSkillEvent>,
     mut log: ResMut<ActionLog>,
+    config: Res<CombatConfig>,
+    mut sc_start: EventWriter<SkillchainStart>,
+    mut sc_step: EventWriter<SkillchainStep>,
+    mut mb_event: EventWriter<MagicBurstWindowEvent>,
     time: Res<Time>,
 ) {
     for ev in events.read() {
         let now = time.elapsed_seconds();
-        log.skills.push(LoggedSkill { time: now, properties: ev.properties });
-        if log.skills.len() > 2 {
+        log.skills.push(LoggedSkill {
+            time: now,
+            properties: ev.properties,
+        });
+        if log.skills.len() > 6 {
             log.skills.remove(0);
         }
 
-        if log.skills.len() < 2 {
-            continue;
+        // Build sequence of first properties from recent skills.
+        let prop_seq: Vec<ScProp> = log.skills.iter().map(|s| s.properties[0]).collect();
+        let mut matched: Option<(u8, SmallVec<[Element; 4]>)> = None;
+        let mut step = 0u8;
+        for n in (2..=prop_seq.len()).rev() {
+            if let Some((lvl, elements)) =
+                lookup_chain_sequence(&prop_seq[prop_seq.len() - n..])
+            {
+                matched = Some((lvl, elements));
+                step = n as u8;
+                break;
+            }
         }
 
-        let prev = &log.skills[log.skills.len() - 2];
-        if now - prev.time > 10.0 {
-            continue;
-        }
+        if let Some((level, elements)) = matched {
+            let base = match step {
+                2 => 10.0,
+                3 => 8.0,
+                4 => 6.0,
+                5 => 3.0,
+                _ => 2.0,
+            } + config.latency_ms as f32 / 1000.0;
 
-        if let Some(result) = lookup_chain(prev.properties[1], ev.properties[0]) {
-            let sc_start = now;
-            let sc_end = now + 10.0;
-            let mb_start = now + 3.0;
-            let mb_end = mb_start + 7.0;
-            let elements = result.elements.clone();
+            let sc_start_time = now;
+            let sc_end_time = now + base;
+            let mb_start_time = sc_end_time;
+            let mb_end_time = mb_start_time + 5.0;
+            let elements_clone = elements.clone();
+
             commands.spawn((
-                SkillchainWindow { start: sc_start, end: sc_end, elements: elements.clone(), level: result.level },
-                MagicBurstWindow { start: mb_start, end: mb_end, elements, level: result.level },
+                SkillchainWindow {
+                    start: sc_start_time,
+                    end: sc_end_time,
+                    elements: elements_clone.clone(),
+                    level,
+                    step,
+                },
+                MagicBurstWindow {
+                    start: mb_start_time,
+                    end: mb_end_time,
+                    elements: elements_clone.clone(),
+                    level,
+                    step,
+                },
             ));
+
+            if step == 2 {
+                sc_start.send(SkillchainStart { level });
+            } else {
+                sc_step.send(SkillchainStep { level });
+            }
+            mb_event.send(MagicBurstWindowEvent { elements: elements_clone });
         }
     }
 }
@@ -63,24 +106,19 @@ pub fn apply_magic_burst(
     mut commands: Commands,
     mut events: EventReader<SpellCastEvent>,
     mut query: Query<(Entity, &SkillchainWindow, &MagicBurstWindow)>,
+    mut hit_event: EventWriter<MagicBurstHit>,
     time: Res<Time>,
 ) {
     for ev in events.read() {
         let now = time.elapsed_seconds();
         for (entity, sc, mb) in &mut query {
             if now >= mb.start && now <= mb.end && mb.elements.contains(&ev.element) {
-                let multiplier = 1.3 + (sc.level as f32 * 0.2);
-                info!("Magic Burst! Damage x{multiplier:?}");
-                // Despawn window after burst.
+                let bonus = 0.35 + 0.1 * (sc.step.saturating_sub(2)) as f32;
+                let final_damage = (ev.damage as f32 * (1.0 + bonus)) as u32;
+                info!("Magic Burst! damage {} (+{:.0}%)", final_damage, bonus * 100.0);
+                hit_event.send(MagicBurstHit);
                 commands.entity(entity).despawn_recursive();
             }
         }
     }
 }
-
-// Future extensions:
-// - Track multiple sequential weapon skills in `ActionLog` to support
-//   multi-step chains and shrinking windows.
-// - Apply elemental resistance adjustments when a chain or magic burst lands.
-// - Compensate for network latency by stretching detection windows based on
-//   player equipment or traits like "SkillchainDuration+".
