@@ -18,45 +18,56 @@ fn spawn_area(mut commands: Commands, lore: Res<LoreResource>) {
     info!("Entering {}", lore.0.intro_quest.start);
     // Elder NPC
     commands.spawn((
-        Sprite::from_color(Color::rgb(0.3, 0.5, 1.0), Vec2::splat(16.0)),
+        Sprite::from_color(Color::srgb(0.3, 0.5, 1.0), Vec2::splat(16.0)),
         Transform::from_xyz(96.0, 96.0, 1.0),
         GlobalTransform::default(),
-        Interactable { id: "elder".to_string() },
+        Interactable {
+            id: "elder".to_string(),
+        },
     ));
     // Guard NPC
     commands.spawn((
-        Sprite::from_color(Color::rgb(0.6, 0.6, 0.8), Vec2::splat(16.0)),
+        Sprite::from_color(Color::srgb(0.6, 0.6, 0.8), Vec2::splat(16.0)),
         Transform::from_xyz(64.0, 64.0, 1.0),
         GlobalTransform::default(),
-        Interactable { id: "guard".to_string() },
+        Interactable {
+            id: "guard".to_string(),
+        },
     ));
     // Shopkeeper NPC
     commands.spawn((
-        Sprite::from_color(Color::rgb(0.8, 0.7, 0.4), Vec2::splat(16.0)),
+        Sprite::from_color(Color::srgb(0.8, 0.7, 0.4), Vec2::splat(16.0)),
         Transform::from_xyz(128.0, 64.0, 1.0),
         GlobalTransform::default(),
-        Interactable { id: "shopkeeper".to_string() },
+        Interactable {
+            id: "shopkeeper".to_string(),
+        },
     ));
     // Curious child NPC
     commands.spawn((
-        Sprite::from_color(Color::rgb(0.9, 0.8, 0.8), Vec2::splat(16.0)),
+        Sprite::from_color(Color::srgb(0.9, 0.8, 0.8), Vec2::splat(16.0)),
         Transform::from_xyz(96.0, 32.0, 1.0),
         GlobalTransform::default(),
-        Interactable { id: "child".to_string() },
+        Interactable {
+            id: "child".to_string(),
+        },
     ));
     // Alynna mentor NPC from lore characters
     commands.spawn((
-        Sprite::from_color(Color::rgb(0.8, 0.4, 0.8), Vec2::splat(16.0)),
+        Sprite::from_color(Color::srgb(0.8, 0.4, 0.8), Vec2::splat(16.0)),
         Transform::from_xyz(48.0, 96.0, 1.0),
         GlobalTransform::default(),
-        Interactable { id: "alynna".to_string() },
+        Interactable {
+            id: "alynna".to_string(),
+        },
     ));
     // Goblin target in the forest
     commands.spawn((
-        Sprite::from_color(Color::rgb(0.7, 0.2, 0.2), Vec2::splat(16.0)),
+        Sprite::from_color(Color::srgb(0.7, 0.2, 0.2), Vec2::splat(16.0)),
         Transform::from_xyz(160.0, 32.0, 1.0),
         GlobalTransform::default(),
-        Interactable { id: "goblin".to_string() },
+        Interactable {
+            id: "goblin".to_string(),
+        },
     ));
 }
-

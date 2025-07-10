@@ -4,8 +4,8 @@ use bevy::prelude::*;
 use smallvec::{smallvec, SmallVec};
 
 use super::components::{
-    ActionLog, CombatConfig, LoggedSkill, MagicBurstHit, MagicBurstWindow,
-    MagicBurstWindowEvent, SkillchainStart, SkillchainStep, SkillchainWindow,
+    ActionLog, CombatConfig, LoggedSkill, MagicBurstHit, MagicBurstWindow, MagicBurstWindowEvent,
+    SkillchainStart, SkillchainStep, SkillchainWindow,
 };
 use super::components::{Element, ScProp};
 use super::skill_tables::lookup_chain_sequence;
@@ -36,7 +36,7 @@ pub fn detect_skillchain(
     time: Res<Time>,
 ) {
     for ev in events.read() {
-        let now = time.elapsed_seconds();
+        let now = time.elapsed_secs();
         log.skills.push(LoggedSkill {
             time: now,
             properties: ev.properties,
@@ -50,9 +50,7 @@ pub fn detect_skillchain(
         let mut matched: Option<(u8, SmallVec<[Element; 4]>)> = None;
         let mut step = 0u8;
         for n in (2..=prop_seq.len()).rev() {
-            if let Some((lvl, elements)) =
-                lookup_chain_sequence(&prop_seq[prop_seq.len() - n..])
-            {
+            if let Some((lvl, elements)) = lookup_chain_sequence(&prop_seq[prop_seq.len() - n..]) {
                 matched = Some((lvl, elements));
                 step = n as u8;
                 break;
@@ -96,7 +94,9 @@ pub fn detect_skillchain(
             } else {
                 sc_step.send(SkillchainStep { level });
             }
-            mb_event.send(MagicBurstWindowEvent { elements: elements_clone });
+            mb_event.send(MagicBurstWindowEvent {
+                elements: elements_clone,
+            });
         }
     }
 }
@@ -110,12 +110,16 @@ pub fn apply_magic_burst(
     time: Res<Time>,
 ) {
     for ev in events.read() {
-        let now = time.elapsed_seconds();
+        let now = time.elapsed_secs();
         for (entity, sc, mb) in &mut query {
             if now >= mb.start && now <= mb.end && mb.elements.contains(&ev.element) {
                 let bonus = 0.35 + 0.1 * (sc.step.saturating_sub(2)) as f32;
                 let final_damage = (ev.damage as f32 * (1.0 + bonus)) as u32;
-                info!("Magic Burst! damage {} (+{:.0}%)", final_damage, bonus * 100.0);
+                info!(
+                    "Magic Burst! damage {} (+{:.0}%)",
+                    final_damage,
+                    bonus * 100.0
+                );
                 hit_event.send(MagicBurstHit);
                 commands.entity(entity).despawn_recursive();
             }
