@@ -1,5 +1,6 @@
 pub mod combat;
 pub mod core;
+pub mod hardware_info;
 pub mod interaction;
 pub mod loading;
 pub mod lore;
@@ -12,6 +13,7 @@ pub mod ui;
 
 pub use combat::CombatPlugin;
 pub use core::CorePlugin;
+pub use hardware_info::HardwareInfoPlugin;
 pub use interaction::InteractionPlugin;
 pub use loading::LoadingPlugin;
 pub use lore::LorePlugin;

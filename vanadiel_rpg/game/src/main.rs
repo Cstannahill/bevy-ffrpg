@@ -4,8 +4,9 @@ use bevy::window::PresentMode;
 
 mod plugins;
 use plugins::{
-    CombatPlugin, CorePlugin, InteractionPlugin as GameInteractionPlugin, LoadingPlugin,
-    LorePlugin, MapPlugin, MovementPlugin, QuestPlugin, SpritePlugin, StarterAreaPlugin, UiPlugin,
+    CombatPlugin, CorePlugin, HardwareInfoPlugin, InteractionPlugin as GameInteractionPlugin,
+    LoadingPlugin, LorePlugin, MapPlugin, MovementPlugin, QuestPlugin, SpritePlugin,
+    StarterAreaPlugin, UiPlugin,
 };
 mod combat;
 
@@ -27,6 +28,7 @@ fn main() {
         )
         .add_plugins((
             CorePlugin,
+            HardwareInfoPlugin,
             LoadingPlugin,
             MapPlugin,
             MovementPlugin,
