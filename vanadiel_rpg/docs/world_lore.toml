@@ -1,5 +1,25 @@
 [world.overview]
 summary = "Vana'diel rebuilds after the Crystal War. The great nations maintain an uneasy alliance while Beastmen and ancient threats stir on the frontiers. Elemental crystals still power magic and technology, but rumors speak of a deeper calamity waiting to be awakened."
+mood = "Hopeful yet wary"
+technology_level = "Steam and crystal-powered machinery are common"
+magic_role = "Essential for trade, warfare, and daily life"
+major_powers = ["San d'Oria", "Bastok", "Windurst", "Jeuno"]
+hero_opportunities = "Adventurers recover relics and battle beastmen"
+trade_routes = ["Airship lines", "merchant caravans", "smuggler ships"]
+environment = "Continents range from lush forests to arid deserts"
+tensions = ["Old grudges after the Crystal War", "rise of beastman tribes", "rumors of ancient evils"]
+ancient_secrets = "Ruins of the Zilart hide lost technologies"
+hero_rank = "Adventurers earn renown through guild tasks"
+economy = "Crystals and minerals fuel prosperous markets"
+notable_innovations = "Airships revolutionize travel"
+political_climate = "Alliances are fragile and diplomacy tense"
+typical_folk_life = "Villagers rely on crystal tools and local militia"
+languages = ["Common", "Elvaan", "Tarutaru", "Mithran", "Galkan"]
+religions = ["Altana worship", "small cults", "ancestor spirits"]
+threats = ["Shadow Lord remnants", "bandits", "wild monsters"]
+recent_upheavals = "Discovery of ancient ruins sparks competition"
+glimpses_of_future = "Prophecies hint at a second catastrophe"
+alliances = ["Adventurers' League", "Arcane Circle", "Commerce Guild"]
 
 [[world.history]]
 name = "Age of Dawn"
@@ -20,6 +40,46 @@ summary = "Recent conflict where the allied nations fought the Shadow Lord and h
 [[world.history]]
 name = "Current Era"
 summary = "Two decades after the war, exploration of ruins and political intrigue accelerate as old wounds reopen."
+
+[[world.history]]
+name = "Age of Beasts"
+summary = "Beastmen races rose to dominance across Vana'diel."
+
+[[world.history]]
+name = "Rise of the Five Races"
+summary = "Humes, Elvaan, Tarutaru, Mithra and Galka emerged to challenge the beastmen."
+
+[[world.history]]
+name = "Age of Magic"
+summary = "Windurst perfected arcane arts while other nations learned to harness spells."
+
+[[world.history]]
+name = "Age of Power"
+summary = "San d'Oria expanded with chivalric armies and Bastok allied with Galka."
+
+[[world.history]]
+name = "Age of Technology"
+summary = "Bastok industry flourished and firearms changed warfare."
+
+[[world.history]]
+name = "Mission North"
+summary = "An expedition uncovered ancient secrets but ended in tragedy."
+
+[[world.history]]
+name = "Moon's Eclipse"
+summary = "A vision of destruction led to forbidden summoning in Windurst."
+
+[[world.history]]
+name = "Rumblings to the North"
+summary = "The Shadow Lord gathered beastmen and built a dark citadel."
+
+[[world.history]]
+name = "Rise of Jeuno"
+summary = "A mysterious Archduke united traders and built a neutral metropolis."
+
+[[world.history]]
+name = "Aftermath of the War"
+summary = "The nations formed a fragile alliance and explore lost lands."
 
 [[regions]]
 name = "Ronfaure"
@@ -45,6 +105,30 @@ biome = "Highland plains and windswept plateaus"
 locations = ["Frontier Outpost", "La Theine Gorge", "Hidden caverns"]
 factions = ["Adventurers' League", "wandering Beastmen"]
 
+[[regions]]
+name = "Tavnazia Peninsula"
+biome = "Broken cliffs and sea-swept ruins"
+locations = ["Tavnazian Safehold", "Misareaux Coast", "Philosopher's Terrace", "Haunted catacombs"]
+factions = ["Tavnazian refugees", "wandering beastmen"]
+
+[[regions]]
+name = "Qufim Island"
+biome = "Chilly island with ancient towers"
+locations = ["Jeuno", "Delkfutt's Tower", "Qufim Outpost", "Sea Serpent Grotto"]
+factions = ["Grand Duchy of Jeuno", "Gigas clans"]
+
+[[regions]]
+name = "Kuzotz"
+biome = "Sweeping desert dunes"
+locations = ["Zeruhn Mines", "Antican Citadel", "Wasteland caravan stop", "Lost Galka tunnels"]
+factions = ["Antican Empire", "Galka nomads"]
+
+[[regions]]
+name = "Elshimo Islands"
+biome = "Tropical jungles and volcanic crags"
+locations = ["Norg", "Yhoator Jungle", "Temple of Uggalepih", "Seaside villages"]
+factions = ["Pirate crews", "Mithra tribes"]
+
 [[factions]]
 name = "Kingdom of San d'Oria"
 goal = "Protect Elvaan lands and uphold chivalric code"
@@ -68,6 +152,41 @@ alignment = "Chaotic Evil"
 [[factions]]
 name = "Arcane Circle"
 goal = "Study relics and unseal ancient magic"
+alignment = "Chaotic Neutral"
+
+[[factions]]
+name = "Grand Duchy of Jeuno"
+goal = "Maintain neutrality and control trade routes"
+alignment = "Lawful Neutral"
+
+[[factions]]
+name = "Tenshodo Syndicate"
+goal = "Smuggle goods and gather secrets across nations"
+alignment = "Neutral Evil"
+
+[[factions]]
+name = "Temple Knights"
+goal = "Guard San d'Oria's faith and investigate heresy"
+alignment = "Lawful Good"
+
+[[factions]]
+name = "Royal Knights"
+goal = "Defend the San d'Oria crown and reclaim lost honor"
+alignment = "Lawful Neutral"
+
+[[factions]]
+name = "Shadow Lord's Legions"
+goal = "Resurrect the fallen tyrant and dominate Vana'diel"
+alignment = "Chaotic Evil"
+
+[[factions]]
+name = "Astral Watchers"
+goal = "Monitor celestial events and prevent misuse of summoning"
+alignment = "Neutral Good"
+
+[[factions]]
+name = "Norg Pirates"
+goal = "Rule the high seas and profit from plunder"
 alignment = "Chaotic Neutral"
 
 [[races]]
@@ -100,10 +219,60 @@ traits = "Massive strength and a stoic outlook"
 culture = "Nomadic laborers with a reincarnation myth"
 origin = "Desert wastes near Bastok"
 
+[[races]]
+name = "Zilart"
+traits = "Ancient telepaths with mastery of magic"
+culture = "Servants of Altana seeking paradise"
+origin = "Hidden capital of Al'Taieu"
+
+[[races]]
+name = "Kuluu"
+traits = "Avatar-worshipping outcasts"
+culture = "Nature guardians wielding primal magic"
+origin = "Northern islands and Sarutabaruta"
+
+[[races]]
+name = "Tonberry"
+traits = "Small, vengeful beings"
+culture = "Secretive hermits practicing dark rites"
+origin = "Warped remnants of the Kuluu"
+
+[[races]]
+name = "Gigas"
+traits = "Towering giants with great strength"
+culture = "Tribal clans loyal to ancient chieftains"
+origin = "Frozen islands to the north"
+
+[[races]]
+name = "Kindred"
+traits = "Winged demons in black armor"
+culture = "Serve dark masters and seek resurrection of their lord"
+origin = "Citadel of the northern wastes"
+
 [[magic]]
 schools = ["Elemental", "Healing", "Shadow", "Geomancy", "Summoning"]
 limits = "Spells draw energy from crystals; overuse can corrupt the caster"
 artifacts = ["ancient Zilart focus stones", "crystal-bound grimoires"]
+usage = "Guilds license mages, but rogue casters persist"
+crystal_dependence = "Each spell consumes a trace of crystal energy"
+summoning_risk = "Calling avatars strains the mind"
+common_items = ["enchanted tools", "spell scrolls", "healing wands"]
+forbidden_arts = ["Soul transfer", "time magic"]
+notable_orders = ["Orastery", "Maunstery", "Black Mage covens"]
+arcane_crises = "Crystal shortages can spark conflict"
+study_locations = ["Horutoto Ruins", "Galka Monasteries", "Jeuno academies"]
+ancient_methods = "Zilart relics hint at lost paradigms of spellcasting"
+mundane_uses = "Magic fuels lighting, travel and communication"
+ethereal_theory = "Scholars debate whether mana flows from another realm"
+ritual_examples = ["circle warding", "symbolic offerings", "moonlit chants"]
+legendary_spells = ["Lightbringer's Radiance", "Fenrir's Eclipse", "Genesis Fragment"]
+institutions = ["Optistery", "Aurastery", "Rhinostery", "Orastery", "Maunstery"]
+spell_components = ["crystal shards", "arcane inks", "rare herbs"]
+dangerous_side_effects = "Mishandled magic warps creatures into monsters"
+everyday_training = "Children learn simple cantrips in local guilds"
+research_frontiers = ["integration with technology", "harnessing primal avatars"]
+protective_charms = ["Blessed medals", "Runic tattoos"]
+black_market = "Illicit scrolls change hands among thieves"
 
 [[hooks]]
 summary = "Goblins raid Briarwood Village seeking a lost Zilart artifact; players uncover the first clue to a wider conspiracy."
@@ -117,7 +286,26 @@ summary = "Scholars of the Arcane Circle hire adventurers to explore a crumbling
 [[hooks]]
 summary = "Rumors spread of a forgotten god sealed beneath Castle Oztroja; the Yagudo plan a ritual to awaken it."
 
+[[hooks]]
+summary = "A mysterious plague spreads from Gustaberg mines, hinting at buried relics."
 
+[[hooks]]
+summary = "The Temple Knights request aid in tracking a rogue Dragoon who stole a relic."
+
+[[hooks]]
+summary = "Jeuno's traders hire escorts for airship routes plagued by sky pirates."
+
+[[hooks]]
+summary = "A Mithra elder seeks relics from the jungle ruins to prove her tribe's history."
+
+[[hooks]]
+summary = "Reports tell of a ghostly maiden guiding adventurers to hidden Zilart temples."
+
+[[hooks]]
+summary = "Tavnazian refugees ask for protection against marauding demons in the cliffs."
+
+[[hooks]]
+summary = "An eccentric scholar offers payment to map the ancient canals beneath Windurst."
 
 # Additional Lore Sections
 
@@ -145,11 +333,55 @@ role = "Mysterious wanderer"
 origin = "Unknown"
 description = "A figure tied to the sealed god, appearing in visions during early quests."
 
+[[characters]]
+name = "Zeid"
+role = "Galka dark knight"
+origin = "Bastok"
+description = "Roams the world seeking redemption after the death of his friend."
+
+[[characters]]
+name = "Aldo"
+role = "Tenshodo leader"
+origin = "Jeuno"
+description = "Charismatic smuggler who keeps an eye on political tensions."
+
+[[characters]]
+name = "Lion"
+role = "Independent pirate"
+origin = "Norg"
+description = "Scout for the pirates, she uncovers threats to the realm."
+
+[[characters]]
+name = "Cid"
+role = "Bastokan engineer"
+origin = "Bastok"
+description = "Inventor of airships, always experimenting with new machinery."
+
 [mythology]
 creation_story = "Altana wept five tears that became the Mothercrystals, giving life to Vana'diel."
 gods = ["Altana the Dawn Goddess", "Promathia the Twilight God"]
 ancient_calamity = "The Zilart tried to open the Gate of the Gods and unleashed the Great Rupture."
 elemental_crystals = ["Fire", "Ice", "Wind", "Earth", "Lightning", "Water", "Light", "Dark"]
+afterlife = "Souls return to the realm of the gods or linger as spirits"
+legendary_figures = ["The Dawn Maidens", "The Gatekeeper", "The Dragon King"]
+prophecies = ["The return of paradise", "The day of darkness"]
+sacred_texts = ["Book of the Gods", "Chronicles of the Age of Power"]
+holy_symbols = ["Mothercrystal shards", "dragon crests"]
+festivals = ["Crystal Blessing", "Moonrise Rites"]
+celestial_events = ["Starfall year", "Eclipse of Fenrir"]
+duality_theme = "Light and darkness are in constant balance"
+cosmic_balance = "Breaking the balance invites catastrophe"
+role_of_adventurers = "Chosen by the crystals to guide destiny"
+tales_of_creation = "Legends say Altana's tears formed the first seas"
+antagonistic_myths = "Promathia's curses spawn monsters and strife"
+sacred_beasts = ["Bahamut", "Fenrir", "Phoenix"]
+lost_chants = ["Song of the Dawn", "Dirge of Twilight"]
+ancestral_worship = "Many tribes honor spirits of heroes past"
+spirits_of_nature = "Elemental guardians protect forests and mountains"
+omens = ["rare comets", "crystal resonance"]
+miraculous_sites = ["The Full Moon Fountain", "Celestial Nexus ruins"]
+chosen_champions = "At times heroes arise known as Crystal Warriors"
+ongoing_legend = "Myths hint that history moves in endless cycles"
 
 [[race_lore]]
 race = "Humes"
@@ -176,6 +408,31 @@ race = "Galka"
 history = "A warrior people with a cycle of reincarnation, wandering the deserts."
 beliefs = "Strength and resilience guide their path."
 
+[[race_lore]]
+race = "Zilart"
+history = "Ancient telepaths who built sky cities and sought paradise."
+beliefs = "Served Altana and pursued enlightenment."
+
+[[race_lore]]
+race = "Kuluu"
+history = "Exiled kin of the Zilart who mastered avatar magic."
+beliefs = "Honored the primal spirits and guarded nature."
+
+[[race_lore]]
+race = "Tonberry"
+history = "Kuluu twisted by magical fallout, now vengeful hermits."
+beliefs = "Remember old grudges and practice dark rites."
+
+[[race_lore]]
+race = "Gigas"
+history = "Giants from the northern isles, once enslaved by the Shadow Lord."
+beliefs = "Strength above all, loyalty to clan chieftains."
+
+[[race_lore]]
+race = "Kindred"
+history = "Winged demons that serve dark masters in the frozen north."
+beliefs = "Seek power to resurrect their lost lord."
+
 [[nation_lore]]
 name = "Kingdom of San d'Oria"
 capital = "San d'Oria"
@@ -194,7 +451,42 @@ capital = "Windurst"
 government = "Magocratic council headed by the Star Sibyl."
 conflicts = "Beset by Yagudo zealots and arcane experiments gone awry."
 
+[[nation_lore]]
+name = "Grand Duchy of Jeuno"
+capital = "Upper Jeuno"
+government = "Autocratic duchy ruled by the mysterious Archduke."
+conflicts = "Balances diplomacy while warding off internal intrigue."
+
+[[nation_lore]]
+name = "Marquisate of Tavnazia"
+capital = "Tavnazian Safehold"
+government = "Ruined state led by a small council of survivors."
+conflicts = "Struggles against beastmen raids and isolation."
+
+[[nation_lore]]
+name = "Aht Urhgan Empire"
+capital = "Al Zahbi"
+government = "Expansive empire across the southern seas."
+conflicts = "Contends with pirates and rebellious provinces."
+
+[[nation_lore]]
+name = "Norg Pirate Haven"
+capital = "Norg"
+government = "Loose confederation of pirates under Gilgamesh."
+conflicts = "Sought after by authorities yet vital for black market trade."
+
 [intro_quest]
 start = "Briarwood Village"
 summary = "Goblins raid the forest village seeking a crystal shard. Tracking them leads the player through La Theine to a crumbling keep, uncovering hints of an awakened deity."
-
+objectives = ["Defend the village", "Track the raiders", "Recover the shard", "Investigate the keep"]
+allies = ["Alynna", "Garrick", "Shalira"]
+antagonist = "Goblin chieftain seeking Zilart relics"
+twist = "The shard resonates with ancient ruins"
+follow_up = "Leads into exploration of the Tavnazian coast"
+rewards = ["basic adventurer rank", "access to guild training"]
+complications = ["Rival adventurers interfere", "local militia distrust outsiders"]
+background = "The shard may be a fragment from the Great Rupture."
+rumors = ["Some say the goblins were hired", "Others sense a dark aura"]
+npc_help = "Eldran appears in visions to guide the heroes"
+future_hook = "The shard draws the attention of Jeuno's scholars"
+scale = "Designed for starting characters but opens the wider world"
