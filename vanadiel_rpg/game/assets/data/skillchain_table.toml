@@ -1,0 +1,19 @@
+[[chains]]
+properties = ["Scission", "Detonation"]
+level = 1
+elements = ["Earth"]
+
+[[chains]]
+properties = ["Liquefaction", "Impaction"]
+level = 2
+elements = ["Fire", "Light"]
+
+[[chains]]
+properties = ["Fragmentation", "Gravitation"]
+level = 3
+elements = ["Dark"]
+
+[[chains]]
+properties = ["Light", "Light"]
+level = 4
+elements = ["Fire", "Wind", "Lightning", "Light"]

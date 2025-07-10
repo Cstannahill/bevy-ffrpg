@@ -1,0 +1,9 @@
+[[weapon_skills]]
+name = "Burning Blade"
+tp_cost = 1000
+properties = ["Scission", "Liquefaction"]
+
+[[weapon_skills]]
+name = "Flat Blade"
+tp_cost = 1000
+properties = ["Detonation", "Impaction"]
