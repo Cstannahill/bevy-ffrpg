@@ -6,6 +6,7 @@ use bevy::render::texture::ImagePlugin;
 use bevy::diagnostic::FrameTimeDiagnosticsPlugin;
 use bevy_ecs_tilemap::TilemapPlugin;
 
+mod combat;
 mod plugins {
     pub mod core;
     pub mod map;

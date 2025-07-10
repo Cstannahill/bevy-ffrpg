@@ -1,0 +1,9 @@
+[[spells]]
+name = "Fire"
+element = "Fire"
+cast_time = 3
+
+[[spells]]
+name = "Stone"
+element = "Earth"
+cast_time = 3
