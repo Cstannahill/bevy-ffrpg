@@ -82,9 +82,11 @@ fn setup_floor(mut commands: Commands) {
     for y in 0..GRID_HEIGHT {
         for x in 0..GRID_WIDTH {
             let color = if (x + y) % 2 == 0 {
-                Color::srgb(0.2, 0.2, 0.2)
+                // Use lighter grey tones so the floor is visible against the
+                // black clear color.
+                Color::srgb(0.4, 0.4, 0.4)
             } else {
-                Color::srgb(0.25, 0.25, 0.25)
+                Color::srgb(0.45, 0.45, 0.45)
             };
             commands.spawn((
                 Sprite::from_color(color, Vec2::splat(TILE)),
@@ -107,7 +109,8 @@ fn setup_walls(mut commands: Commands) {
 
     for (pos, size) in walls {
         commands.spawn((
-            Sprite::from_color(Color::srgb(0.4, 0.0, 0.0), size),
+            // Brighter wall color for better visibility
+            Sprite::from_color(Color::srgb(0.7, 0.1, 0.1), size),
             Transform::from_xyz(pos.x, pos.y, 1.0),
             GlobalTransform::default(),
             Wall,
