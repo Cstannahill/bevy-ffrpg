@@ -23,63 +23,103 @@ alliances = ["Adventurers' League", "Arcane Circle", "Commerce Guild"]
 
 [[world.history]]
 name = "Age of Dawn"
-summary = "Mythic era when the gods shaped the land and placed the Mothercrystals."
+summary = "Mythic era when the gods shaped the world and placed the Mothercrystals."
 
 [[world.history]]
-name = "Rise of the Zilart"
-summary = "An advanced race built sky cities and sought to reach paradise, leaving ruins across the world."
+name = "Age of the Zilart"
+summary = "Powerful telepaths founded Al'Taieu and ruled Vana'diel from the skies."
+
+[[world.history]]
+name = "Dawn Maidens"
+summary = "A sacred sisterhood served Altana while their gatekeeper guarded paradise's keys."
+
+[[world.history]]
+name = "Rise of the Kuluu"
+summary = "Telepathy-less outcasts bonded with the Avatars and forged their own cities."
+
+[[world.history]]
+name = "Zilart Dominance"
+summary = "Amulets bound the Kuluu's thoughts to the Eye of Altana, ensuring Zilart control."
+
+[[world.history]]
+name = "Construction of Tu'Lia"
+summary = "The twin princes oversaw a floating metropolis and built Ro'Maeve as its gateway."
+
+[[world.history]]
+name = "Kuluu Rebellion"
+summary = "In secret alliance with the Dawn Maidens, the Kuluu sabotaged Fei'Yin to halt the Zilart."
+
+[[world.history]]
+name = "War of the Avatars"
+summary = "Bahamut led the Terrestrial Avatars against the Zilart's attempt to reach paradise."
 
 [[world.history]]
 name = "Great Rupture"
-summary = "A calamity shattered the Zilart's plans, scattering their civilization and sealing away forbidden magic."
+summary = "The Fei'Yin explosion devastated the Northlands and nearly tore the planet apart."
 
 [[world.history]]
-name = "Crystal War"
-summary = "Recent conflict where the allied nations fought the Shadow Lord and his Beastmen armies."
-
-[[world.history]]
-name = "Current Era"
-summary = "Two decades after the war, exploration of ruins and political intrigue accelerate as old wounds reopen."
+name = "Fallout of Magic"
+summary = "Survivors were twisted into Tonberry and the Dawn Maidens became wandering spirits."
 
 [[world.history]]
 name = "Age of Beasts"
-summary = "Beastmen races rose to dominance across Vana'diel."
+summary = "Orcs, Yagudo, Quadav and other beastmen spread across the ravaged world."
 
 [[world.history]]
-name = "Rise of the Five Races"
-summary = "Humes, Elvaan, Tarutaru, Mithra and Galka emerged to challenge the beastmen."
+name = "Rise of Goblins"
+summary = "Nomadic Goblins and Moblins perfected trade and stayed aloof from other hordes."
+
+[[world.history]]
+name = "Galka Kingdom"
+summary = "Galka built a desert empire in Kuzotz until the Anticans forced them into exile."
+
+[[world.history]]
+name = "Mithran Isles"
+summary = "Mithra guarded their island homes, rarely venturing beyond their shores."
+
+[[world.history]]
+name = "Taru Diaspora"
+summary = "Taru clans wandered until the first Star Sybil led them to found Windurst."
 
 [[world.history]]
 name = "Age of Magic"
-summary = "Windurst perfected arcane arts while other nations learned to harness spells."
+summary = "Windurst's ministries mastered the arcane arts and allied with adventurous Mithra."
 
 [[world.history]]
 name = "Age of Power"
-summary = "San d'Oria expanded with chivalric armies and Bastok allied with Galka."
+summary = "San d'Oria forged a mighty empire while Bastok and the Galka rose to challenge it."
 
 [[world.history]]
 name = "Age of Technology"
-summary = "Bastok industry flourished and firearms changed warfare."
+summary = "Bastok industry thrived, inventing firearms and drawing jealousy from rivals."
 
 [[world.history]]
-name = "Mission North"
-summary = "An expedition uncovered ancient secrets but ended in tragedy."
+name = "Mission to the North"
+summary = "A joint expedition sought lost secrets but ended in murder and lingering curses."
 
 [[world.history]]
 name = "Moon's Eclipse"
-summary = "A vision of destruction led to forbidden summoning in Windurst."
+summary = "Prophecies of ruin led a rogue mage to attempt controlling Fenrir at the Full Moon Fountain."
 
 [[world.history]]
 name = "Rumblings to the North"
-summary = "The Shadow Lord gathered beastmen and built a dark citadel."
+summary = "Kindred demons gathered beastmen under a new Shadow Lord in the frozen wastes."
 
 [[world.history]]
 name = "Rise of Jeuno"
-summary = "A mysterious Archduke united traders and built a neutral metropolis."
+summary = "Archduke Kam'lanaut transformed a fishing port into a neutral hub of trade and airships."
+
+[[world.history]]
+name = "Crystal War"
+summary = "Beastman legions swept across the nations until heroes united to defeat the Shadow Lord."
 
 [[world.history]]
 name = "Aftermath of the War"
-summary = "The nations formed a fragile alliance and explore lost lands."
+summary = "The allied nations formed a tense peace while beastmen rebuilt their strongholds."
+
+[[world.history]]
+name = "Current Era"
+summary = "Decades later, adventurers explore ancient ruins as old rivalries and dark plots return."
 
 [[regions]]
 name = "Ronfaure"
