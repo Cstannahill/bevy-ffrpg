@@ -1,9 +1,9 @@
 //! Entry point for the Vana'diel RPG.
 
+use bevy::diagnostic::{DiagnosticsStore, FrameTimeDiagnosticsPlugin};
 use bevy::prelude::*;
-use bevy::window::PresentMode;
 use bevy::render::texture::ImagePlugin;
-use bevy::diagnostic::{FrameTimeDiagnosticsPlugin, DiagnosticsStore};
+use bevy::window::PresentMode;
 
 const TILE: f32 = 32.0;
 const GRID_WIDTH: i32 = 40;
@@ -30,7 +30,6 @@ struct DebugInfo {
     visible: bool,
 }
 
-
 /// Launches the game application.
 fn main() {
     App::new()
@@ -38,20 +37,38 @@ fn main() {
         .add_plugins(
             DefaultPlugins
                 .set(WindowPlugin {
-                primary_window: Some(Window {
-                    resolution: (640.0, 360.0).into(),
-                    title: "Vana'diel RPG".into(),
-                    present_mode: PresentMode::AutoVsync,
+                    primary_window: Some(Window {
+                        resolution: (640.0, 360.0).into(),
+                        title: "Vana'diel RPG".into(),
+                        present_mode: PresentMode::AutoVsync,
+                        ..default()
+                    }),
                     ..default()
-                }),
-                ..default()
-            })
+                })
                 .set(ImagePlugin::default_nearest()),
         )
         .add_plugins(FrameTimeDiagnosticsPlugin::default())
         .insert_resource(DebugInfo { visible: true })
-        .add_systems(Startup, (setup_floor, setup_walls, setup_player, setup_camera, setup_ui, startup_log))
-        .add_systems(Update, (player_movement, camera_follow, update_debug_text, toggle_debug))
+        .add_systems(
+            Startup,
+            (
+                setup_floor,
+                setup_walls,
+                setup_player,
+                setup_camera,
+                setup_ui,
+                startup_log,
+            ),
+        )
+        .add_systems(
+            Update,
+            (
+                player_movement,
+                camera_follow,
+                update_debug_text,
+                toggle_debug,
+            ),
+        )
         .run();
 }
 
@@ -65,24 +82,14 @@ fn setup_floor(mut commands: Commands) {
     for y in 0..GRID_HEIGHT {
         for x in 0..GRID_WIDTH {
             let color = if (x + y) % 2 == 0 {
-                Color::rgb(0.2, 0.2, 0.2)
+                Color::srgb(0.2, 0.2, 0.2)
             } else {
-                Color::rgb(0.25, 0.25, 0.25)
+                Color::srgb(0.25, 0.25, 0.25)
             };
             commands.spawn((
-                SpriteBundle {
-                    sprite: Sprite {
-                        color,
-                        custom_size: Some(Vec2::splat(TILE)),
-                        ..default()
-                    },
-                    transform: Transform::from_xyz(
-                        start_x + x as f32 * TILE,
-                        start_y + y as f32 * TILE,
-                        0.0,
-                    ),
-                    ..default()
-                },
+                Sprite::from_color(color, Vec2::splat(TILE)),
+                Transform::from_xyz(start_x + x as f32 * TILE, start_y + y as f32 * TILE, 0.0),
+                GlobalTransform::default(),
                 Floor,
             ));
         }
@@ -100,15 +107,9 @@ fn setup_walls(mut commands: Commands) {
 
     for (pos, size) in walls {
         commands.spawn((
-            SpriteBundle {
-                sprite: Sprite {
-                    color: Color::rgb(0.4, 0.0, 0.0),
-                    custom_size: Some(size),
-                    ..default()
-                },
-                transform: Transform::from_xyz(pos.x, pos.y, 1.0),
-                ..default()
-            },
+            Sprite::from_color(Color::srgb(0.4, 0.0, 0.0), size),
+            Transform::from_xyz(pos.x, pos.y, 1.0),
+            GlobalTransform::default(),
             Wall,
         ));
     }
@@ -116,42 +117,32 @@ fn setup_walls(mut commands: Commands) {
 
 fn setup_player(mut commands: Commands) {
     commands.spawn((
-        SpriteBundle {
-            sprite: Sprite {
-                color: Color::YELLOW,
-                custom_size: Some(Vec2::splat(16.0)),
-                ..default()
-            },
-            transform: Transform::from_xyz(0.0, 0.0, 2.0),
-            ..default()
-        },
+        Sprite::from_color(Color::srgb(1.0, 1.0, 0.0), Vec2::splat(16.0)),
+        Transform::from_xyz(0.0, 0.0, 2.0),
+        GlobalTransform::default(),
         Player,
     ));
 }
 
 fn setup_camera(mut commands: Commands) {
-    commands.spawn((Camera2dBundle::default(), MainCamera));
+    commands.spawn((Camera2d, MainCamera));
 }
 
 fn setup_ui(mut commands: Commands, asset_server: Res<AssetServer>) {
     commands.spawn((
-        TextBundle {
-            text: Text::from_section(
-                "",
-                TextStyle {
-                    font: asset_server.load("fonts/FiraSans-Bold.ttf"),
-                    font_size: 14.0,
-                    color: Color::WHITE,
-                },
-            ),
-            style: Style {
-                position_type: PositionType::Absolute,
-                top: Val::Px(5.0),
-                left: Val::Px(5.0),
-                ..default()
-            },
+        Node {
+            position_type: PositionType::Absolute,
+            top: Val::Px(5.0),
+            left: Val::Px(5.0),
             ..default()
         },
+        Text::new(""),
+        TextFont {
+            font: asset_server.load("fonts/FiraSans-Bold.ttf"),
+            font_size: 14.0,
+            ..default()
+        },
+        TextColor(Color::WHITE),
         FpsText,
     ));
 }
@@ -162,7 +153,7 @@ fn player_movement(
     mut query: Query<&mut Transform, With<Player>>,
     walls: Query<(&Transform, &Sprite), With<Wall>>,
 ) {
-    let mut transform = query.single_mut();
+    let mut transform = query.single_mut().unwrap();
     let mut delta = Vec2::ZERO;
     if keyboard.pressed(KeyCode::KeyA) || keyboard.pressed(KeyCode::ArrowLeft) {
         delta.x -= 1.0;
@@ -181,7 +172,7 @@ fn player_movement(
         return;
     }
 
-    delta = delta.normalize() * SPEED * time.delta_seconds();
+    delta = delta.normalize() * SPEED * time.delta_secs();
 
     let size = Vec2::splat(16.0);
     let mut new_pos = transform.translation;
@@ -196,11 +187,11 @@ fn player_movement(
             sprite.custom_size.unwrap_or(Vec2::splat(TILE)),
         ) {
             if delta.x > 0.0 {
-                new_pos.x = wall_tr.translation.x -
-                    (sprite.custom_size.unwrap_or(Vec2::splat(TILE)).x + size.x) / 2.0;
+                new_pos.x = wall_tr.translation.x
+                    - (sprite.custom_size.unwrap_or(Vec2::splat(TILE)).x + size.x) / 2.0;
             } else {
-                new_pos.x = wall_tr.translation.x +
-                    (sprite.custom_size.unwrap_or(Vec2::splat(TILE)).x + size.x) / 2.0;
+                new_pos.x = wall_tr.translation.x
+                    + (sprite.custom_size.unwrap_or(Vec2::splat(TILE)).x + size.x) / 2.0;
             }
             break;
         }
@@ -216,11 +207,11 @@ fn player_movement(
             sprite.custom_size.unwrap_or(Vec2::splat(TILE)),
         ) {
             if delta.y > 0.0 {
-                new_pos.y = wall_tr.translation.y -
-                    (sprite.custom_size.unwrap_or(Vec2::splat(TILE)).y + size.y) / 2.0;
+                new_pos.y = wall_tr.translation.y
+                    - (sprite.custom_size.unwrap_or(Vec2::splat(TILE)).y + size.y) / 2.0;
             } else {
-                new_pos.y = wall_tr.translation.y +
-                    (sprite.custom_size.unwrap_or(Vec2::splat(TILE)).y + size.y) / 2.0;
+                new_pos.y = wall_tr.translation.y
+                    + (sprite.custom_size.unwrap_or(Vec2::splat(TILE)).y + size.y) / 2.0;
             }
             break;
         }
@@ -233,8 +224,8 @@ fn camera_follow(
     player: Query<&Transform, With<Player>>,
     mut camera: Query<&mut Transform, (With<MainCamera>, Without<Player>)>,
 ) {
-    let player_pos = player.single().translation;
-    let mut cam = camera.single_mut();
+    let player_pos = player.single().unwrap().translation;
+    let mut cam = camera.single_mut().unwrap();
     cam.translation.x = player_pos.x;
     cam.translation.y = player_pos.y;
 }
@@ -252,9 +243,9 @@ fn update_debug_text(
         .get(&FrameTimeDiagnosticsPlugin::FPS)
         .and_then(|d| d.average())
         .unwrap_or(0.0);
-    let pos = player.single().translation;
-    let mut text = query.single_mut();
-    text.sections[0].value = format!("FPS: {:.0}\nPos: {:.1}, {:.1}", fps, pos.x, pos.y);
+    let pos = player.single().unwrap().translation;
+    let mut text = query.single_mut().unwrap();
+    **text = format!("FPS: {:.0}\nPos: {:.1}, {:.1}", fps, pos.x, pos.y);
 }
 
 fn toggle_debug(
@@ -265,7 +256,11 @@ fn toggle_debug(
     if keyboard.just_pressed(KeyCode::F1) {
         info.visible = !info.visible;
         for mut v in &mut vis_query {
-            v.visible = info.visible;
+            *v = if info.visible {
+                Visibility::Visible
+            } else {
+                Visibility::Hidden
+            };
         }
     }
 }
@@ -276,8 +271,5 @@ fn aabb_collision(a_pos: Vec3, a_size: Vec2, b_pos: Vec3, b_size: Vec2) -> bool 
     let b_min = b_pos.truncate() - b_size / 2.0;
     let b_max = b_pos.truncate() + b_size / 2.0;
 
-    a_min.x < b_max.x
-        && a_max.x > b_min.x
-        && a_min.y < b_max.y
-        && a_max.y > b_min.y
+    a_min.x < b_max.x && a_max.x > b_min.x && a_min.y < b_max.y && a_max.y > b_min.y
 }
